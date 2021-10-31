@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>{{ page.title }} - d33tah's homepage</title>
+        <meta charset="utf-8">
+        <style>
+:root {
+    --lighter-background-color: #EDE6E3;
+    --darker-background-color: #36382E;
+    --middle-background-color: #DADAD9;
+    --mobile-layout-threshold: 600px;
+}
+body {
+    background-color: var(--middle-background-color);
+}
+article {
+    display: flex;
+}
+
+  @media (max-width: 600px) {
+      article {
+          flex-direction: column;
+      }
+  }
+
+  @media (min-width: 600px) {
+      nav {
+          flex: 30%;
+      }
+      main {
+          flex: 70%;
+      }
+  }
+
+
+* {
+    padding: 0.3em;
+    border: 1px dotted black;
+}
+main {
+    background-color: var(--lighter-background-color);
+}
+nav {
+    background-color: var(--darker-background-color);
+}
+
+nav > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+p {
+    filter: invert(0.9);
+    mix-blend-mode: difference;
+}
+.myphoto {
+    width: 288px;
+    height: 384px;
+}
+
+        </style>
+    </head>
+    <body>
+        <article>
+            <nav>
+                <img src="photo_2019-07-30_19-32-26.jpg" class="myphoto"></img>
+                <p>🏠 Strona główna</p>
+                <p>🀄 Język chiński</p>
+                <p>🖧  Hakierspejs</p>
+                <p>💌 Kontakt</p>
+            </nav>
+            <main>
+                {{ content }}
+            </main>
+        </article>
+    </body>
+</html>
