@@ -8,7 +8,6 @@
     --lighter-background-color: #EDE6E3;
     --darker-background-color: #36382E;
     --middle-background-color: #DADAD9;
-    --mobile-layout-threshold: 600px;
 }
 body {
     background-color: var(--middle-background-color);
@@ -17,13 +16,13 @@ article {
     display: flex;
 }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
       article {
           flex-direction: column;
       }
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 1000px) {
       nav {
           flex: 30%;
       }
