@@ -58,6 +58,10 @@ p {
     width: 288px;
     height: 384px;
 }
+a, em, strong {
+    border: none;
+    padding: 0px;
+}
 
         </style>
     </head>
@@ -65,10 +69,10 @@ p {
         <article>
             <nav>
                 <img src="photo_2019-07-30_19-32-26.jpg" class="myphoto"></img>
-                <p>🏠 Strona główna</p>
-                <p>🀄 Język chiński</p>
-                <p>🖧  Hakierspejs</p>
-                <p>💌 Kontakt</p>
+                <p><a href="index.html">🏠 Strona główna</a></p>
+                <p><a href="chinski.html">🀄 Język chiński</a></p>
+                <p><a href="hakierspejs.html">🤖 Hakierspejs</a></p>
+                <p><a href="kontakt.html">💌 Kontakt</a></p>
             </nav>
             <main>
                 {{ content }}
