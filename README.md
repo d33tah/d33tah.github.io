@@ -17,8 +17,8 @@ adresu e-mail:
 ## Czaty
 
 Uwaga: adresy które tu podaję w tej sekcji <u>**wyglądają jak adresy e-mail, ale
-nie do tego służą**</u> i zwyczajnie nie będę w stanie odbierać ich z nich
-odbierać.
+nie do tego służą**</u> i zwyczajnie nie będę w stanie odbierać z nich
+wiadomości.
 
 Mam tymczasowe konto na XMPP pod adresem **d33@sqli.io**.
 
