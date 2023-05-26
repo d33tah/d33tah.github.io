@@ -1,6 +1,6 @@
 Ostatnia aktualizacja: 26 maja, rano. Tekst po polsku poniżej:
 
-** 🇺🇸🇺🇸🇺🇸 For English, please use a [machine translator](https://d33-pl.translate.goog/?_x_tr_sl=pl&_x_tr_tl=en&_x_tr_hl=pl&_x_tr_pto=wapp). 🇺🇸🇺🇸🇺🇸 **
+<strong>🇺🇸🇺🇸🇺🇸 For English, please use a [machine translator](https://d33-pl.translate.goog/?_x_tr_sl=pl&_x_tr_tl=en&_x_tr_hl=pl&_x_tr_pto=wapp). 🇺🇸🇺🇸🇺🇸</strong>
 
 # Utrudniony kontakt - jestem w Chinach do 11 czerwca!
 
