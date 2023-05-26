@@ -23,5 +23,3 @@ odbierać.
 Mam tymczasowe konto na XMPP pod adresem **d33@sqli.io**.
 
 W sieci Matrix moje konto to **@d33cn:noevil.pl**.
-
-## Test
