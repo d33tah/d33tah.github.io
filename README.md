@@ -23,3 +23,7 @@ wiadomości.
 Mam tymczasowe konto na XMPP pod adresem **d33@sqli.io**.
 
 W sieci Matrix moje konto to **@d33cn:noevil.pl**.
+
+## Zdjęcia
+
+Zdjęcia przesyłam tutaj: [http://104.40.224.106/](http://104.40.224.106/)
