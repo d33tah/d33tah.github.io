@@ -20,6 +20,6 @@ Uwaga: adresy które tu podaję w tej sekcji <u>**wyglądają jak adresy e-mail,
 nie do tego służą**</u> i zwyczajnie nie będę w stanie odbierać z nich
 wiadomości.
 
-Mam tymczasowe konto na XMPP pod adresem **d33@sqli.io**.
+Mam tymczasowe konto na XMPP pod adresem **d33@disroot.org**.
 
 W sieci Matrix moje konto to **@d33cn:noevil.pl**.
