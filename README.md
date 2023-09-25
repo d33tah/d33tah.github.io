@@ -1,8 +1,8 @@
-Ostatnia aktualizacja: 21 września, rano. Tekst po polsku poniżej:
+Ostatnia aktualizacja: 26 września, północ czasu polskiego. Tekst po polsku poniżej:
 
 <strong>🇺🇸🇺🇸🇺🇸 For English, please use a [machine translator](https://d33-pl.translate.goog/?_x_tr_sl=pl&_x_tr_tl=en&_x_tr_hl=pl&_x_tr_pto=wapp). 🇺🇸🇺🇸🇺🇸</strong>
 
-# Utrudniony kontakt - jestem w Chinach do 21 lipca!
+# Utrudniony kontakt - jestem w Chinach do 21 listopada!
 
 Tu publikuję moje tymczasowe dane kontaktowe. Możliwe że wrzucę tu też jakieś zdjęcia z podróży na końcu tej strony.
 
