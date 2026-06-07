@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>d33tah | Migruję poza Telegram | I'm migrating away from Telegram</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","headline":"Website in construction","name":"Jacek Wielemborek","url":"https://d33.pl/"}</script>
+
+<style>
+body {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.6;
+  font-family: system-ui, sans-serif;
+}
+</style>
+
+<script>
+    function encrypt(key, plaintext) {
+    let cyphertext = [];
+    // dodaj newline na końcu
+    plaintext = plaintext + '\n';
+    // Convert to hex to properly handle UTF8
+    plaintext = Array.from(plaintext).map(function(c) {
+        if(c.charCodeAt(0) < 128) return c.charCodeAt(0).toString(16).padStart(2, '0');
+        else return encodeURIComponent(c).replace(/\%/g,'').toLowerCase();
+    }).join('');
+    plaintext = plaintext.match(/.{1,2}/g).map(x => parseInt(x, 16));
+    for (let i = 0; i < plaintext.length; i++) {
+        cyphertext.push(plaintext[i] ^ key.charCodeAt(Math.floor(i % key.length)));
+    }
+    cyphertext = cyphertext.map(function(x) {
+        return x.toString(16).padStart(2, '0');
+    });
+    return cyphertext.join('');
+}
+
+function decrypt(key, cyphertext) {
+    try {
+        cyphertext = cyphertext.match(/.{1,2}/g).map(x => parseInt(x, 16));
+        let plaintext = [];
+        for (let i = 0; i < cyphertext.length; i++) {
+            let byte = cyphertext[i] ^ key.charCodeAt(Math.floor(i % key.length));
+            if (byte === 0x0a) break; // newline -> ignoruj wszystko dalej
+            plaintext.push(byte.toString(16).padStart(2, '0'));
+        }
+        if (plaintext.length === 0) return '';
+        return decodeURIComponent('%' + plaintext.join('').match(/.{1,2}/g).join('%'));
+    }
+    catch(e) {
+        return false;
+    }
+}
+
+function onload() {
+    // klucz z hasha URL: #password=...
+    var params = new URLSearchParams(location.hash.slice(1));
+    var password = params.get('password');
+
+    if (!password) return;
+
+    var elements = document.querySelectorAll(".encrypted");
+
+    elements.forEach(function (el) {
+      var enc = (el.getAttribute("encrypted-content") || "").trim();
+      if (!enc) return;
+//        console.log('key=' + key, ', enc=' + enc);
+      el.innerHTML = decrypt(password, enc);
+    });
+}
+
+
+
+// Super simple password to 256-bit key function
+function passwordDerivedKey(password, salt, iterations, len) {
+    if(!password) password = randomStr();
+    if(!salt) salt = '80ymb4oZ';
+    if(!iterations) iterations = 8;
+    if(!len) len = 256;
+    len = Math.ceil(len / 8);
+    var key = '';
+
+    while(key.length < len) {
+        var i = 0;
+        var intSalt = salt;
+        var intKey = '';
+        while(i < iterations) {
+            intKey = hash(password + intSalt);
+            var newSalt = '';
+            for(let j = 0; j < intSalt.length; j++) {
+                newSalt += (intSalt.charCodeAt(j) ^ intKey.charCodeAt(Math.floor(j % intKey.length))).toString(36);
+            }
+            intSalt = newSalt;
+            i++;
+        }
+        key += intKey;
+    }
+    return key.substring(0, len);
+}
+
+// Generates a random string of the specificed length
+function randomStr(len) {
+    var str = parseInt(Math.random()*10e16).toString(36);
+    if(typeof len == 'undefined') return str;
+    else {
+        while(str.length < len) {
+            str += parseInt(Math.random()*10e16).toString(36);
+        }
+        return str.substring(str.length - len);
+    }
+}
+
+// Super simple hash function
+function hash(str) {
+    for(var i = 0, h = 4641154056; i < str.length; i++) h = Math.imul(h + str.charCodeAt(i) | 0, 2654435761);
+    h = (h ^ h >>> 17) >>> 0;
+    return h.toString(36);
+}
+</script>
+
+  </head>
+  <body onload="onload()">
+
+      <p>Scroll down or click for <a href="#eng">ENGLISH VERSION</a>.</p>
+
+    <h1>Migruję poza Telegram</h1>
+
+    <p>W czerwcu 2026 roku postanowiłem wymigrować poza Telegram. Byłem jego
+    użytkownikiem od ~2018. Mimo że to wygodny komunikator, przestałem czuć
+    się komfortowo używając go. Głównym powodem jest brak prywatności:
+    <b>do wszystkich wiadomości mogą mieć wgląd rosyjskie służby</b>. Jako
+    że na co dzień pracuję w data science, rozumiem zagrożenia wynikające z
+    udostępniania tam moich prywatnych rozmów i nie chcę tego kontynuować.</p>
+
+    <p>Niedługo najprawdopodobniej usunę konto Telegram i jeśli rozmawiamy
+    tylko tam, stracimy kontakt. Jeżeli chcesz pozostać
+    w kontakcie, możesz ze mną chatować używając komunikatora Signal.
+    Znajdziesz mnie pod nazwą użytkownika "d33.33". W pierwszej wiadomości
+    napisz proszę, kim jesteś.</p>
+
+    <p class="encrypted" encrypted-content="2e0f1e0d0a0e1008b2e2efd01f0106034f03060d3d081307170901504e0e4f0e1d0801104c09001d0616175f5d1c0601010c0b0303045b4a131002151f2e375e5b1b131b57574131052244331d2428542028374934130c1c00376b01350a0c3c0b29545922242b443d52551d233524042658241a3b381b2a05357d524c24232f24232e674e35213d372f115f13514146250c0c4f174117065a4540b3c1054f070b1f025e4e045904170c415006004f5a0e4d0f5f0b07494b1b04441c0600550e0a010b422e05475a581541524c070a0a030227495d525a191a5902114c414f2b00a8db481d1b541d13a091b2d21c1f14acde05421900b0eeb4c5401e1b0a4f1c010c0b48abdbb0eeb4c54311523722363f4d4f495d5200081e254e1f1c190a141c0c1344010f07471f08045013030d094f2006591c080c495e594c501a1d0a00524f0f591a110753594a4011061d061e411908024d4e340d455659111a421b031c195d400f1506000e4b4202154d51260b5e54590f09591d1316594a1f0e1b14061549421c064846175b0d1c070d4f5a0e4d0f5f0b07494b1e11590001554049020c135f07195a1d194a0e5f320b5c551b0c0f171a021c0715160314174d51260b5e54590f094e1d150d431301410b0353420613474f7e"></p>
+
+    <hr>
+
+    <h1 id="eng">I'm migrating away from Telegram</h1>
+
+
+    <p>In June 2026, I decided to migrate away from Telegram. I had been
+    using it since ~2018. Although it's a convenient messenger, I no longer
+    felt comfortable     using it. The main reason is the lack of privacy:
+    <b>all messages might be accessible to the Russian government</b>.
+    As I work in data science on a daily basis, I understand the risks of
+    sharing my private conversations there and I don't want to continue doing so.</p>
+
+    <p>I'll likely delete my Telegram account soon, and if
+    we only communicate there, we'll lose touch. If you want to stay
+    in touch, you can chat with me using Signal.
+    You can find me under the username "d33.33." In the first message,
+    please tell me who you are.</p>
+
+    <p class="encrypted" encrypted-content="3b02474c0a0554041345421e523c0601010c0b014e5d15491e1748164f4d07121b1d1417414e0700110b4c1c5c020a494c0812020b0c35314e515b0444565953371e20442d0e3f2e442a682016351d1e1a1b356b1f26110a2c01694306232a394226505503302e22142c1833453a36092c1e377d4c5f37253f2666503a2a3d2353420613404136105611451552180e1f434d0a544e0419081f090d11160b1d031c1e47441d414808560d5f1514524d0b0e040b59015b1c0c1a094230165c5c481f014513060418051925494341411f0a5342061340412d0603454e111c4f0e0a1c0247591c18541d19454b191c0b4f0b0a4d08434e39393926450514415c1b07072d04420017111b050459191d011c4806004e0d0113542417115f190a4f475a0e4d0f5f0b07494b1e11590001554049020c135f07195a1d194a0e5f320b5c551b0c0f001a04071d4c084c0400061748001f000f5021105a45114c185f1b0a151b570a4c1a131d11580a5f174e400e584f02150d5200540104004b4d50071b121f1e5d02410c151d040c555e06004045402d031e5d1515014c114e181c0c1c480b0845132e05475a0204454a060c07080c1e49490b5d5b08484c037a"></p>
